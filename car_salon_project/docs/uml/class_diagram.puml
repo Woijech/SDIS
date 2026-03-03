@@ -1,0 +1,90 @@
+@startuml
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+
+class Car {
+  +id: int
+  +vin: str
+  +brand: str
+  +model: str
+  +year: int
+  +price: float
+  +state: CarState
+  +space_id: int?
+}
+
+enum CarState {
+  NEW
+  IN_STOCK
+  RESERVED_FOR_TESTDRIVE
+  READY_FOR_SALE
+  IN_SERVICE
+  SOLD
+}
+
+class Client {
+  +id: int
+  +full_name: str
+  +phone: str
+  +email: str?
+}
+
+class Seller {
+  +id: int
+  +full_name: str
+}
+
+class ShowroomSpace {
+  +id: int
+  +name: str
+  +capacity: int
+}
+
+class TestDrive {
+  +id: int
+  +car_id: int
+  +client_id: int
+  +seller_id: int
+  +scheduled_at: datetime
+  +status: str
+  +notes: str?
+}
+
+class Documentation {
+  +id: int
+  +car_id: int
+  +content: str
+  +created_at: datetime
+}
+
+class Sale {
+  +id: int
+  +car_id: int
+  +client_id: int
+  +seller_id: int
+  +sold_at: datetime
+  +price: float
+}
+
+class ServiceOrder {
+  +id: int
+  +car_id: int
+  +client_id: int?
+  +opened_at: datetime
+  +closed_at: datetime?
+  +description: str
+  +status: str
+}
+
+Car "0..*" --> "0..1" ShowroomSpace : размещён в
+Documentation "*" --> "1" Car : относится к
+TestDrive "*" --> "1" Car
+TestDrive "*" --> "1" Client
+TestDrive "*" --> "1" Seller
+Sale "*" --> "1" Car
+Sale "*" --> "1" Client
+Sale "*" --> "1" Seller
+ServiceOrder "*" --> "1" Car
+ServiceOrder "*" --> "0..1" Client
+
+@enduml

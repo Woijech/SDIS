@@ -1,0 +1,8 @@
+[project]
+name = "car-salon-52"
+version = "0.1.0"
+description = "CLI model of a car salon "
+requires-python = ">=3.10"
+dependencies = ["coverage","plantuml"]
+
+

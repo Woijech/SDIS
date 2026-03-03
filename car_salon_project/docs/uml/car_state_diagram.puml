@@ -1,0 +1,25 @@
+@startuml
+skinparam style strictuml
+[*] --> NEW
+
+NEW --> IN_STOCK : receive_stock
+NEW --> READY_FOR_SALE : prepare
+
+IN_STOCK --> RESERVED_FOR_TESTDRIVE : schedule_test_drive
+RESERVED_FOR_TESTDRIVE --> IN_STOCK : complete_test_drive
+
+IN_STOCK --> READY_FOR_SALE : prepare
+RESERVED_FOR_TESTDRIVE --> READY_FOR_SALE : prepare
+
+READY_FOR_SALE --> SOLD : sell
+IN_STOCK --> SOLD : sell
+
+IN_STOCK --> IN_SERVICE : open_service
+READY_FOR_SALE --> IN_SERVICE : open_service
+RESERVED_FOR_TESTDRIVE --> IN_SERVICE : open_service
+
+IN_SERVICE --> IN_STOCK : close_service (no prep)
+IN_SERVICE --> READY_FOR_SALE : close_service (was prepared)
+
+SOLD --> [*]
+@enduml
