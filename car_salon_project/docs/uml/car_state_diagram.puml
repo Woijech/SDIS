@@ -1,25 +1,33 @@
 @startuml
 skinparam style strictuml
-[*] --> NEW
+skinparam linetype ortho
+skinparam dpi 160
+skinparam nodesep 35
+skinparam ranksep 35
 
-NEW --> IN_STOCK : receive_stock
-NEW --> READY_FOR_SALE : prepare
+skinparam ArrowThickness 1
+skinparam ArrowColor #222
 
-IN_STOCK --> RESERVED_FOR_TESTDRIVE : schedule_test_drive
-RESERVED_FOR_TESTDRIVE --> IN_STOCK : complete_test_drive
+[*] --> НОВЫЙ
 
-IN_STOCK --> READY_FOR_SALE : prepare
-RESERVED_FOR_TESTDRIVE --> READY_FOR_SALE : prepare
+НОВЫЙ --> НА_СКЛАДЕ : поступление
+НОВЫЙ --> ГОТОВ_К_ПРОДАЖЕ : подготовка
 
-READY_FOR_SALE --> SOLD : sell
-IN_STOCK --> SOLD : sell
+НА_СКЛАДЕ --> ЗАРЕЗЕРВИРОВАН_ДЛЯ_ТЕСТДРАЙВА : назначить тест-драйв
+ЗАРЕЗЕРВИРОВАН_ДЛЯ_ТЕСТДРАЙВА --> НА_СКЛАДЕ : завершить тест-драйв
 
-IN_STOCK --> IN_SERVICE : open_service
-READY_FOR_SALE --> IN_SERVICE : open_service
-RESERVED_FOR_TESTDRIVE --> IN_SERVICE : open_service
+НА_СКЛАДЕ --> ГОТОВ_К_ПРОДАЖЕ : подготовка
+ЗАРЕЗЕРВИРОВАН_ДЛЯ_ТЕСТДРАЙВА --> ГОТОВ_К_ПРОДАЖЕ : подготовка
 
-IN_SERVICE --> IN_STOCK : close_service (no prep)
-IN_SERVICE --> READY_FOR_SALE : close_service (was prepared)
+ГОТОВ_К_ПРОДАЖЕ --> ПРОДАН : продажа
+НА_СКЛАДЕ --> ПРОДАН : продажа
 
-SOLD --> [*]
+НА_СКЛАДЕ --> В_СЕРВИСЕ : открыть сервис
+ГОТОВ_К_ПРОДАЖЕ --> В_СЕРВИСЕ : открыть сервис
+ЗАРЕЗЕРВИРОВАН_ДЛЯ_ТЕСТДРАЙВА --> В_СЕРВИСЕ : открыть сервис
+
+В_СЕРВИСЕ --> НА_СКЛАДЕ : закрыть сервис (без подготовки)
+В_СЕРВИСЕ --> ГОТОВ_К_ПРОДАЖЕ : закрыть сервис (была подготовка)
+
+ПРОДАН --> [*]
 @enduml
