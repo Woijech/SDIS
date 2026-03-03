@@ -6,7 +6,7 @@ Implements required operations: sale, test-drive, model info, service maintenanc
 from __future__ import annotations
 
 from dataclasses import asdict
-from datetime import datetime, UTC
+from datetime import datetime, timezone
 from typing import Dict, Optional
 
 from .exceptions import StateTransitionError, ValidationError
@@ -74,14 +74,18 @@ class CarSalonService:
     def add_documentation(self, car_id: int, content: str) -> int:
         _validate_non_empty("content", content)
         self.cars.get(car_id)
-        doc = self.docs.add(car_id=car_id, content=content, created_at=datetime.now(UTC))
+        doc = self.docs.add(car_id=car_id, content=content, created_at=datetime.now(timezone.utc))
         return doc.id
 
     def prepare_car_for_sale(self, car_id: int, note: str) -> Car:
         _validate_non_empty("note", note)
         car = self.cars.get(car_id)
         self._transition_car(car, CarState.READY_FOR_SALE)
-        self.docs.add(car_id=car_id, content=f"PREP: {note}", created_at=datetime.now(UTC))
+        self.docs.add(
+            car_id=car_id,
+            content=f"PREP: {note}",
+            created_at=datetime.now(timezone.utc),
+        )
         return self.cars.get(car_id)
 
     def schedule_test_drive(
@@ -137,13 +141,13 @@ class CarSalonService:
             car_id=car_id,
             client_id=client_id,
             seller_id=seller_id,
-            sold_at=datetime.now(UTC),
+            sold_at=datetime.now(timezone.utc),
             price=final_price,
         )
         self.docs.add(
             car_id=car_id,
             content=f"SALE: client_id={client_id}, seller_id={seller_id}, price={final_price}",
-            created_at=datetime.now(UTC),
+            created_at=datetime.now(timezone.utc),
         )
         return sale.id
 
@@ -158,14 +162,14 @@ class CarSalonService:
         so = self.services.add(
             car_id=car_id,
             client_id=client_id,
-            opened_at=datetime.now(UTC),
+            opened_at=datetime.now(timezone.utc),
             description=description,
             status="OPEN",
         )
         self.docs.add(
             car_id=car_id,
             content=f"SERVICE_OPEN: order_id={so.id}, desc={description}",
-            created_at=datetime.now(UTC),
+            created_at=datetime.now(timezone.utc),
         )
         return so.id
 
@@ -173,7 +177,7 @@ class CarSalonService:
         so = self.services.get(service_order_id)
         if so.status != "OPEN":
             raise StateTransitionError("Service order is not OPEN")
-        self.services.close(service_order_id, datetime.now(UTC))
+        self.services.close(service_order_id, datetime.now(timezone.utc))
         car = self.cars.get(so.car_id)
         docs = self.docs.list_for_car(so.car_id)
         prepared = any(d.content.startswith("PREP:") for d in docs)
@@ -182,7 +186,7 @@ class CarSalonService:
         self.docs.add(
             car_id=so.car_id,
             content=f"SERVICE_CLOSE: order_id={service_order_id}",
-            created_at=datetime.now(UTC),
+            created_at=datetime.now(timezone.utc),
         )
 
     def assign_car_to_space(self, car_id: int, space_id: Optional[int]) -> Car:

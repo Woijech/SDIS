@@ -222,11 +222,12 @@ class TestDriveRepository:
         status: str,
         notes: Optional[str],
     ) -> TestDrive:
-        cur = self._conn.execute(
-            """INSERT INTO test_drives(car_id, client_id, seller_id, scheduled_at, status, notes)
-               VALUES(?,?,?,?,?,?)""",
-            (car_id, client_id, seller_id, _dt_to_str(scheduled_at), status, notes),
-        )
+        with self._conn:
+            cur = self._conn.execute(
+                """INSERT INTO test_drives(car_id, client_id, seller_id, scheduled_at, status, notes)
+                   VALUES(?,?,?,?,?,?)""",
+                (car_id, client_id, seller_id, _dt_to_str(scheduled_at), status, notes),
+            )
         return self.get(int(cur.lastrowid))
 
     def get(self, td_id: int) -> TestDrive:

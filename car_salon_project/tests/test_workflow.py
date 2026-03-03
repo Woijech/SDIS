@@ -1,6 +1,6 @@
 import tempfile
 import unittest
-from datetime import datetime, timedelta, UTC
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from car_salon.db import connect
@@ -67,7 +67,7 @@ class WorkflowTests(unittest.TestCase):
 
     def test_test_drive_flow(self) -> None:
         self.service.receive_car_to_stock(self.car.id)
-        when = datetime.now(UTC) + timedelta(days=1)
+        when = datetime.now(timezone.utc) + timedelta(days=1)
         td_id = self.service.schedule_test_drive(
             self.car.id, self.client.id, self.seller.id, when, "note"
         )
@@ -77,6 +77,16 @@ class WorkflowTests(unittest.TestCase):
         self.service.complete_test_drive(td_id, "ok")
         car = self.service.cars.get(self.car.id)
         self.assertEqual(car.state, CarState.IN_STOCK)
+
+    def test_test_drive_persistence_between_sessions(self) -> None:
+        self.service.receive_car_to_stock(self.car.id)
+        when = datetime.now(timezone.utc) + timedelta(days=1)
+        self.service.schedule_test_drive(self.car.id, self.client.id, self.seller.id, when, None)
+
+        service2 = build_service(self.db_path)
+        test_drives = service2.test_drives.list("SCHEDULED")
+        self.assertEqual(len(test_drives), 1)
+        self.assertEqual(test_drives[0].car_id, self.car.id)
 
     def test_service_order_flow(self) -> None:
         self.service.receive_car_to_stock(self.car.id)
