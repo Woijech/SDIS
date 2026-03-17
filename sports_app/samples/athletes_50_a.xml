@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<athletes>
+  <athlete>
+    <fio>Фёдорова Алексей Иванович</fio>
+    <squad>n/a</squad>
+    <position>лёгкий вес</position>
+    <titles>3</titles>
+    <sport>Бокс</sport>
+    <rank>3-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Андреева Андрей Алексеевич</fio>
+    <squad>основной</squad>
+    <position>спортивная</position>
+    <titles>13</titles>
+    <sport>Гимнастика</sport>
+    <rank>кмс</rank>
+  </athlete>
+  <athlete>
+    <fio>Сидоров Алина Алексеевна</fio>
+    <squad>основной</squad>
+    <position>атакующий защитник</position>
+    <titles>18</titles>
+    <sport>Баскетбол</sport>
+    <rank>1-й юношеский</rank>
+  </athlete>
+  <athlete>
+    <fio>Макарова Виктория Алексеевна</fio>
+    <squad>основной</squad>
+    <position>одиночка</position>
+    <titles>7</titles>
+    <sport>Теннис</sport>
+    <rank>1-й юношеский</rank>
+  </athlete>
+  <athlete>
+    <fio>Козлов Ольга Сергеевич</fio>
+    <squad>n/a</squad>
+    <position>средние дистанции</position>
+    <titles>3</titles>
+    <sport>Лёгкая атлетика</sport>
+    <rank>мастер спорта</rank>
+  </athlete>
+  <athlete>
+    <fio>Попов Никита Павловна</fio>
+    <squad>n/a</squad>
+    <position>комплекс</position>
+    <titles>20</titles>
+    <sport>Плавание</sport>
+    <rank>2-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Романова Дмитрий Павловна</fio>
+    <squad>основной</squad>
+    <position>лёгкий вес</position>
+    <titles>19</titles>
+    <sport>Бокс</sport>
+    <rank>2-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Михайлова Анна Ивановна</fio>
+    <squad>n/a</squad>
+    <position>либеро</position>
+    <titles>14</titles>
+    <sport>Волейбол</sport>
+    <rank>3-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Попов Сергей Иванович</fio>
+    <squad>n/a</squad>
+    <position>баттерфляй</position>
+    <titles>9</titles>
+    <sport>Плавание</sport>
+    <rank>мастер спорта</rank>
+  </athlete>
+  <athlete>
+    <fio>Павлова Михаил Павловна</fio>
+    <squad>основной</squad>
+    <position>диагональный</position>
+    <titles>3</titles>
+    <sport>Волейбол</sport>
+    <rank>мастер спорта</rank>
+  </athlete>
+  <athlete>
+    <fio>Новикова Максим Ивановна</fio>
+    <squad>запасной</squad>
+    <position>лёгкий вес</position>
+    <titles>1</titles>
+    <sport>Дзюдо</sport>
+    <rank>1-й юношеский</rank>
+  </athlete>
+  <athlete>
+    <fio>Новикова Мария Павловна</fio>
+    <squad>запасной</squad>
+    <position>прыжки</position>
+    <titles>18</titles>
+    <sport>Лёгкая атлетика</sport>
+    <rank>кмс</rank>
+  </athlete>
+  <athlete>
+    <fio>Лебедев Полина Андреевна</fio>
+    <squad>n/a</squad>
+    <position>разыгрывающий</position>
+    <titles>2</titles>
+    <sport>Баскетбол</sport>
+    <rank>1-й юношеский</rank>
+  </athlete>
+  <athlete>
+    <fio>Макарова Дарья Дмитриевич</fio>
+    <squad>n/a</squad>
+    <position>индивидуальная гонка</position>
+    <titles>12</titles>
+    <sport>Биатлон</sport>
+    <rank>3-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Морозова Егор Павловна</fio>
+    <squad>основной</squad>
+    <position>нападающий</position>
+    <titles>15</titles>
+    <sport>Футбол</sport>
+    <rank>1-й юношеский</rank>
+  </athlete>
+  <athlete>
+    <fio>Смирнов Сергей Алексеевна</fio>
+    <squad>запасной</squad>
+    <position>пары</position>
+    <titles>15</titles>
+    <sport>Теннис</sport>
+    <rank>1-й юношеский</rank>
+  </athlete>
+  <athlete>
+    <fio>Фёдорова Алина Дмитриевич</fio>
+    <squad>основной</squad>
+    <position>защитник</position>
+    <titles>13</titles>
+    <sport>Хоккей</sport>
+    <rank>мастер спорта</rank>
+  </athlete>
+  <athlete>
+    <fio>Морозова Екатерина Павлович</fio>
+    <squad>основной</squad>
+    <position>брасс</position>
+    <titles>2</titles>
+    <sport>Плавание</sport>
+    <rank>2-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Соколов Иван Ивановна</fio>
+    <squad>n/a</squad>
+    <position>вратарь</position>
+    <titles>5</titles>
+    <sport>Хоккей</sport>
+    <rank>3-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Смирнов Ольга Сергеевна</fio>
+    <squad>запасной</squad>
+    <position>вольный стиль</position>
+    <titles>19</titles>
+    <sport>Плавание</sport>
+    <rank>мастер спорта</rank>
+  </athlete>
+  <athlete>
+    <fio>Андреева Елена Дмитриевна</fio>
+    <squad>n/a</squad>
+    <position>лёгкий вес</position>
+    <titles>23</titles>
+    <sport>Бокс</sport>
+    <rank>1-й юношеский</rank>
+  </athlete>
+  <athlete>
+    <fio>Фёдорова Екатерина Алексеевна</fio>
+    <squad>запасной</squad>
+    <position>либеро</position>
+    <titles>3</titles>
+    <sport>Волейбол</sport>
+    <rank>кмс</rank>
+  </athlete>
+  <athlete>
+    <fio>Петров Андрей Иванович</fio>
+    <squad>основной</squad>
+    <position>рапид</position>
+    <titles>14</titles>
+    <sport>Шахматы</sport>
+    <rank>2-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Зайцева Алексей Иванович</fio>
+    <squad>основной</squad>
+    <position>лёгкий форвард</position>
+    <titles>18</titles>
+    <sport>Баскетбол</sport>
+    <rank>2-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Морозова Елена Алексеевич</fio>
+    <squad>основной</squad>
+    <position>спринт</position>
+    <titles>6</titles>
+    <sport>Лёгкая атлетика</sport>
+    <rank>мастер спорта</rank>
+  </athlete>
+  <athlete>
+    <fio>Лебедев Мария Павловна</fio>
+    <squad>запасной</squad>
+    <position>лёгкий вес</position>
+    <titles>15</titles>
+    <sport>Дзюдо</sport>
+    <rank>1-й юношеский</rank>
+  </athlete>
+  <athlete>
+    <fio>Павлова Полина Ивановна</fio>
+    <squad>запасной</squad>
+    <position>тяжёлый форвард</position>
+    <titles>2</titles>
+    <sport>Баскетбол</sport>
+    <rank>2-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Лебедев Полина Андреевна</fio>
+    <squad>основной</squad>
+    <position>лёгкий форвард</position>
+    <titles>16</titles>
+    <sport>Баскетбол</sport>
+    <rank>1-й юношеский</rank>
+  </athlete>
+  <athlete>
+    <fio>Смирнов Алина Алексеевич</fio>
+    <squad>n/a</squad>
+    <position>пары</position>
+    <titles>9</titles>
+    <sport>Теннис</sport>
+    <rank>1-й юношеский</rank>
+  </athlete>
+  <athlete>
+    <fio>Андреева Мария Сергеевич</fio>
+    <squad>запасной</squad>
+    <position>индивидуальная гонка</position>
+    <titles>24</titles>
+    <sport>Биатлон</sport>
+    <rank>2-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Соколов Елена Павлович</fio>
+    <squad>основной</squad>
+    <position>прыжки</position>
+    <titles>12</titles>
+    <sport>Лёгкая атлетика</sport>
+    <rank>2-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Морозова Иван Алексеевич</fio>
+    <squad>запасной</squad>
+    <position>пары</position>
+    <titles>15</titles>
+    <sport>Теннис</sport>
+    <rank>3-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Павлова Мария Андреевич</fio>
+    <squad>основной</squad>
+    <position>пары</position>
+    <titles>7</titles>
+    <sport>Теннис</sport>
+    <rank>1-й юношеский</rank>
+  </athlete>
+  <athlete>
+    <fio>Волков Анна Павлович</fio>
+    <squad>запасной</squad>
+    <position>пары</position>
+    <titles>19</titles>
+    <sport>Теннис</sport>
+    <rank>мастер спорта</rank>
+  </athlete>
+  <athlete>
+    <fio>Морозова Дмитрий Дмитриевна</fio>
+    <squad>основной</squad>
+    <position>нападающий</position>
+    <titles>12</titles>
+    <sport>Футбол</sport>
+    <rank>2-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Михайлова Анна Иванович</fio>
+    <squad>n/a</squad>
+    <position>доигровщик</position>
+    <titles>12</titles>
+    <sport>Волейбол</sport>
+    <rank>кмс</rank>
+  </athlete>
+  <athlete>
+    <fio>Сидоров Егор Сергеевич</fio>
+    <squad>основной</squad>
+    <position>тяжёлый вес</position>
+    <titles>0</titles>
+    <sport>Дзюдо</sport>
+    <rank>2-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Смирнов Елена Павловна</fio>
+    <squad>запасной</squad>
+    <position>художественная</position>
+    <titles>21</titles>
+    <sport>Гимнастика</sport>
+    <rank>3-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Романова Максим Алексеевич</fio>
+    <squad>основной</squad>
+    <position>нападающий</position>
+    <titles>25</titles>
+    <sport>Хоккей</sport>
+    <rank>1-й юношеский</rank>
+  </athlete>
+  <athlete>
+    <fio>Михайлова Андрей Павлович</fio>
+    <squad>основной</squad>
+    <position>средние дистанции</position>
+    <titles>8</titles>
+    <sport>Лёгкая атлетика</sport>
+    <rank>2-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Соколов Виктория Андреевич</fio>
+    <squad>запасной</squad>
+    <position>комплекс</position>
+    <titles>17</titles>
+    <sport>Плавание</sport>
+    <rank>кмс</rank>
+  </athlete>
+  <athlete>
+    <fio>Морозова Дарья Дмитриевна</fio>
+    <squad>n/a</squad>
+    <position>вратарь</position>
+    <titles>16</titles>
+    <sport>Хоккей</sport>
+    <rank>кмс</rank>
+  </athlete>
+  <athlete>
+    <fio>Романова Максим Сергеевна</fio>
+    <squad>n/a</squad>
+    <position>средние дистанции</position>
+    <titles>0</titles>
+    <sport>Лёгкая атлетика</sport>
+    <rank>кмс</rank>
+  </athlete>
+  <athlete>
+    <fio>Иванов Максим Сергеевич</fio>
+    <squad>основной</squad>
+    <position>нападающий</position>
+    <titles>15</titles>
+    <sport>Хоккей</sport>
+    <rank>мастер спорта</rank>
+  </athlete>
+  <athlete>
+    <fio>Романова Алексей Андреевич</fio>
+    <squad>n/a</squad>
+    <position>спринт</position>
+    <titles>16</titles>
+    <sport>Биатлон</sport>
+    <rank>мастер спорта</rank>
+  </athlete>
+  <athlete>
+    <fio>Кузнецов Алина Алексеевич</fio>
+    <squad>основной</squad>
+    <position>метание</position>
+    <titles>6</titles>
+    <sport>Лёгкая атлетика</sport>
+    <rank>3-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Андреева Дарья Сергеевна</fio>
+    <squad>основной</squad>
+    <position>вратарь</position>
+    <titles>24</titles>
+    <sport>Футбол</sport>
+    <rank>1-й юношеский</rank>
+  </athlete>
+  <athlete>
+    <fio>Зайцева Ксения Павловна</fio>
+    <squad>n/a</squad>
+    <position>диагональный</position>
+    <titles>6</titles>
+    <sport>Волейбол</sport>
+    <rank>3-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Романова Полина Сергеевна</fio>
+    <squad>основной</squad>
+    <position>либеро</position>
+    <titles>22</titles>
+    <sport>Волейбол</sport>
+    <rank>мастер спорта</rank>
+  </athlete>
+  <athlete>
+    <fio>Волков Дарья Сергеевич</fio>
+    <squad>запасной</squad>
+    <position>комплекс</position>
+    <titles>3</titles>
+    <sport>Плавание</sport>
+    <rank>кмс</rank>
+  </athlete>
+  <athlete>
+    <fio>Сидоров Сергей Алексеевна</fio>
+    <squad>основной</squad>
+    <position>диагональный</position>
+    <titles>6</titles>
+    <sport>Волейбол</sport>
+    <rank>3-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Морозова Максим Дмитриевич</fio>
+    <squad>основной</squad>
+    <position>атакующий защитник</position>
+    <titles>14</titles>
+    <sport>Баскетбол</sport>
+    <rank>2-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Фёдорова Полина Сергеевич</fio>
+    <squad>n/a</squad>
+    <position>спринт</position>
+    <titles>7</titles>
+    <sport>Биатлон</sport>
+    <rank>2-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Андреева Екатерина Андреевич</fio>
+    <squad>запасной</squad>
+    <position>эстафета</position>
+    <titles>6</titles>
+    <sport>Биатлон</sport>
+    <rank>3-й разряд</rank>
+  </athlete>
+  <athlete>
+    <fio>Морозова Иван Андреевич</fio>
+    <squad>n/a</squad>
+    <position>лёгкий вес</position>
+    <titles>14</titles>
+    <sport>Бокс</sport>
+    <rank>кмс</rank>
+  </athlete>
+</athletes>
