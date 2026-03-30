@@ -1,0 +1,41 @@
+{
+  "pistol": {
+    "damage": 18,
+    "cooldown": 0.28,
+    "projectile_speed": 700,
+    "pellets": 1,
+    "spread_degrees": 0,
+    "color": [
+      250,
+      244,
+      227
+    ],
+    "projectile_radius": 4
+  },
+  "shotgun": {
+    "damage": 11,
+    "cooldown": 0.72,
+    "projectile_speed": 610,
+    "pellets": 6,
+    "spread_degrees": 24,
+    "color": [
+      255,
+      198,
+      112
+    ],
+    "projectile_radius": 4
+  },
+  "rifle": {
+    "damage": 9,
+    "cooldown": 0.11,
+    "projectile_speed": 860,
+    "pellets": 1,
+    "spread_degrees": 4,
+    "color": [
+      120,
+      214,
+      255
+    ],
+    "projectile_radius": 3
+  }
+}

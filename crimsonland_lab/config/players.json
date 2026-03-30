@@ -1,0 +1,13 @@
+{
+  "default": {
+    "speed": 260,
+    "radius": 16,
+    "health": 100,
+    "sprite": "players/player.png",
+    "color": [
+      126,
+      232,
+      180
+    ]
+  }
+}

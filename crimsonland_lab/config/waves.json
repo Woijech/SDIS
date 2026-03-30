@@ -1,0 +1,524 @@
+{
+  "waves": [
+    {
+      "number": 1,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 4,
+          "interval": 0.54
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 5,
+          "interval": 0.53
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 6,
+          "interval": 0.52
+        },
+        {
+          "enemy": "runner",
+          "count": 2,
+          "interval": 0.47
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 7,
+          "interval": 0.51
+        },
+        {
+          "enemy": "runner",
+          "count": 3,
+          "interval": 0.46
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 8,
+          "interval": 0.5
+        },
+        {
+          "enemy": "runner",
+          "count": 3,
+          "interval": 0.45
+        },
+        {
+          "enemy": "tank",
+          "count": 1,
+          "interval": 0.9
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 9,
+          "interval": 0.49
+        },
+        {
+          "enemy": "runner",
+          "count": 4,
+          "interval": 0.44
+        },
+        {
+          "enemy": "tank",
+          "count": 1,
+          "interval": 0.9
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 10,
+          "interval": 0.48
+        },
+        {
+          "enemy": "runner",
+          "count": 4,
+          "interval": 0.43
+        },
+        {
+          "enemy": "tank",
+          "count": 1,
+          "interval": 0.9
+        },
+        {
+          "enemy": "shooter",
+          "count": 1,
+          "interval": 1.0
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 11,
+          "interval": 0.47
+        },
+        {
+          "enemy": "runner",
+          "count": 5,
+          "interval": 0.42
+        },
+        {
+          "enemy": "tank",
+          "count": 1,
+          "interval": 0.9
+        },
+        {
+          "enemy": "shooter",
+          "count": 2,
+          "interval": 1.0
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 12,
+          "interval": 0.46
+        },
+        {
+          "enemy": "runner",
+          "count": 5,
+          "interval": 0.41
+        },
+        {
+          "enemy": "tank",
+          "count": 1,
+          "interval": 0.9
+        },
+        {
+          "enemy": "shooter",
+          "count": 2,
+          "interval": 1.0
+        },
+        {
+          "enemy": "kamikaze",
+          "count": 3,
+          "interval": 0.38
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 13,
+          "interval": 0.45
+        },
+        {
+          "enemy": "runner",
+          "count": 6,
+          "interval": 0.4
+        },
+        {
+          "enemy": "tank",
+          "count": 2,
+          "interval": 0.9
+        },
+        {
+          "enemy": "shooter",
+          "count": 2,
+          "interval": 1.0
+        },
+        {
+          "enemy": "kamikaze",
+          "count": 3,
+          "interval": 0.37
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 14,
+          "interval": 0.44
+        },
+        {
+          "enemy": "runner",
+          "count": 6,
+          "interval": 0.39
+        },
+        {
+          "enemy": "tank",
+          "count": 2,
+          "interval": 0.9
+        },
+        {
+          "enemy": "shooter",
+          "count": 2,
+          "interval": 1.0
+        },
+        {
+          "enemy": "kamikaze",
+          "count": 3,
+          "interval": 0.36
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 15,
+          "interval": 0.43
+        },
+        {
+          "enemy": "runner",
+          "count": 7,
+          "interval": 0.38
+        },
+        {
+          "enemy": "tank",
+          "count": 2,
+          "interval": 0.9
+        },
+        {
+          "enemy": "shooter",
+          "count": 3,
+          "interval": 1.0
+        },
+        {
+          "enemy": "kamikaze",
+          "count": 4,
+          "interval": 0.35
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 16,
+          "interval": 0.42
+        },
+        {
+          "enemy": "runner",
+          "count": 7,
+          "interval": 0.37
+        },
+        {
+          "enemy": "tank",
+          "count": 2,
+          "interval": 0.9
+        },
+        {
+          "enemy": "shooter",
+          "count": 3,
+          "interval": 1.0
+        },
+        {
+          "enemy": "kamikaze",
+          "count": 4,
+          "interval": 0.35
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 17,
+          "interval": 0.41
+        },
+        {
+          "enemy": "runner",
+          "count": 8,
+          "interval": 0.36
+        },
+        {
+          "enemy": "tank",
+          "count": 2,
+          "interval": 0.9
+        },
+        {
+          "enemy": "shooter",
+          "count": 3,
+          "interval": 1.0
+        },
+        {
+          "enemy": "kamikaze",
+          "count": 4,
+          "interval": 0.34
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 18,
+          "interval": 0.4
+        },
+        {
+          "enemy": "runner",
+          "count": 8,
+          "interval": 0.35
+        },
+        {
+          "enemy": "tank",
+          "count": 3,
+          "interval": 0.9
+        },
+        {
+          "enemy": "shooter",
+          "count": 3,
+          "interval": 1.0
+        },
+        {
+          "enemy": "kamikaze",
+          "count": 5,
+          "interval": 0.33
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 19,
+          "interval": 0.39
+        },
+        {
+          "enemy": "runner",
+          "count": 9,
+          "interval": 0.34
+        },
+        {
+          "enemy": "tank",
+          "count": 3,
+          "interval": 0.9
+        },
+        {
+          "enemy": "shooter",
+          "count": 4,
+          "interval": 1.0
+        },
+        {
+          "enemy": "kamikaze",
+          "count": 5,
+          "interval": 0.32
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 20,
+          "interval": 0.38
+        },
+        {
+          "enemy": "runner",
+          "count": 9,
+          "interval": 0.33
+        },
+        {
+          "enemy": "tank",
+          "count": 3,
+          "interval": 0.9
+        },
+        {
+          "enemy": "shooter",
+          "count": 4,
+          "interval": 1.0
+        },
+        {
+          "enemy": "kamikaze",
+          "count": 5,
+          "interval": 0.31
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 21,
+          "interval": 0.37
+        },
+        {
+          "enemy": "runner",
+          "count": 10,
+          "interval": 0.32
+        },
+        {
+          "enemy": "tank",
+          "count": 3,
+          "interval": 0.9
+        },
+        {
+          "enemy": "shooter",
+          "count": 4,
+          "interval": 1.0
+        },
+        {
+          "enemy": "kamikaze",
+          "count": 6,
+          "interval": 0.31
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "clear_delay": 2.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 22,
+          "interval": 0.36
+        },
+        {
+          "enemy": "runner",
+          "count": 10,
+          "interval": 0.31
+        },
+        {
+          "enemy": "tank",
+          "count": 3,
+          "interval": 0.9
+        },
+        {
+          "enemy": "shooter",
+          "count": 4,
+          "interval": 1.0
+        },
+        {
+          "enemy": "kamikaze",
+          "count": 6,
+          "interval": 0.3
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "clear_delay": 1.0,
+      "entries": [
+        {
+          "enemy": "walker",
+          "count": 23,
+          "interval": 0.35
+        },
+        {
+          "enemy": "runner",
+          "count": 11,
+          "interval": 0.3
+        },
+        {
+          "enemy": "tank",
+          "count": 4,
+          "interval": 0.9
+        },
+        {
+          "enemy": "shooter",
+          "count": 5,
+          "interval": 1.0
+        },
+        {
+          "enemy": "kamikaze",
+          "count": 6,
+          "interval": 0.29
+        }
+      ]
+    }
+  ]
+}

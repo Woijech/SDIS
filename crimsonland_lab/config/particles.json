@@ -1,0 +1,13 @@
+{
+  "enemy_hit_text": {
+    "color": [92, 186, 255],
+    "chance": 0.35,
+    "lifetime": 0.55,
+    "gravity": 420,
+    "drift_x_min": -65,
+    "drift_x_max": 65,
+    "launch_y_min": -105,
+    "launch_y_max": -50,
+    "offset_y": -8
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "title": "OSTIS INCIDENT",
+  "fullscreen": true,
+  "screen_width": 960,
+  "screen_height": 640,
+  "player_size_scale": 3.0,
+  "enemy_size_scale": 3.0,
+  "fps": 60,
+  "player_speed": 260,
+  "player_radius": 16,
+  "player_health": 100,
+  "player_model": "default",
+  "player_sprite": "players/player.png",
+  "music_volume": 0.25,
+  "sfx_volume": 0.35,
+  "weapon_drop_chance": 0.1
+}
