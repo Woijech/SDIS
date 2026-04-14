@@ -1,0 +1,529 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="hero">
+    <div>
+      <h1>Car Salon FastAPI</h1>
+      <p>
+        Веб-интерфейс к первой лабораторной работе. CLI и браузер работают через
+        общий сервисный слой <code>CarSalonService</code>, поэтому бизнес-правила
+        не дублируются.
+      </p>
+    </div>
+    <div class="hero-links">
+      <a href="/docs">Swagger UI</a>
+      <a href="/api/state">JSON state</a>
+    </div>
+  </section>
+
+  {% if message %}
+    <div class="alert success">{{ message }}</div>
+  {% endif %}
+  {% if error %}
+    <div class="alert error">{{ error }}</div>
+  {% endif %}
+
+  <section class="summary-grid">
+    {% for card in summary_cards %}
+      <article class="summary-card">
+        <div class="summary-title">{{ card.title }}</div>
+        <div class="summary-value">{{ card.value }}</div>
+        <div class="summary-hint">{{ card.hint }}</div>
+      </article>
+    {% endfor %}
+  </section>
+
+  <section class="form-grid">
+    <article class="panel">
+      <h2>Регистрация сущностей</h2>
+      <form method="post" action="/cars/create">
+        <div class="two-columns">
+          <label>VIN<input name="vin" required></label>
+          <label>Марка<input name="brand" required></label>
+          <label>Модель<input name="model" required></label>
+          <label>Год<input name="year" type="number" min="1900" required></label>
+          <label>Цена<input name="price" type="number" step="0.01" min="0.01" required></label>
+        </div>
+        <button type="submit">Добавить автомобиль</button>
+      </form>
+
+      <hr>
+
+      <form method="post" action="/clients/create">
+        <div class="two-columns">
+          <label>ФИО<input name="full_name" required></label>
+          <label>Телефон<input name="phone" required></label>
+          <label>Email<input name="email"></label>
+        </div>
+        <button type="submit">Добавить клиента</button>
+      </form>
+
+      <hr>
+
+      <form method="post" action="/sellers/create">
+        <label>ФИО продавца<input name="full_name" required></label>
+        <button type="submit">Добавить продавца</button>
+      </form>
+
+      <hr>
+
+      <form method="post" action="/spaces/create">
+        <div class="two-columns">
+          <label>Название места<input name="name" required></label>
+          <label>Вместимость<input name="capacity" type="number" min="1" required></label>
+        </div>
+        <button type="submit">Добавить выставочное место</button>
+      </form>
+    </article>
+
+    <article class="panel">
+      <h2>Операции с автомобилем</h2>
+      <form method="post" action="/cars/receive-stock">
+        <label>Автомобиль
+          <select name="car_id" required>
+            {% for option in car_options %}
+              <option value="{{ option.id }}" {% if option.id == selected_car_id %}selected{% endif %}>{{ option.label }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <button type="submit">Принять в склад</button>
+      </form>
+
+      <hr>
+
+      <form method="post" action="/cars/assign-space">
+        <div class="two-columns">
+          <label>Автомобиль
+            <select name="car_id" required>
+              {% for option in car_options %}
+                <option value="{{ option.id }}" {% if option.id == selected_car_id %}selected{% endif %}>{{ option.label }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label>Место
+            <select name="space_id">
+              <option value="">Снять с места</option>
+              {% for option in space_options %}
+                <option value="{{ option.id }}">{{ option.label }}</option>
+              {% endfor %}
+            </select>
+          </label>
+        </div>
+        <button type="submit">Назначить / снять с места</button>
+      </form>
+
+      <hr>
+
+      <form method="post" action="/cars/prepare">
+        <label>Автомобиль
+          <select name="car_id" required>
+            {% for option in car_options %}
+              <option value="{{ option.id }}" {% if option.id == selected_car_id %}selected{% endif %}>{{ option.label }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label>Заметка<textarea name="note" required placeholder="Например: мойка, диагностика, полировка"></textarea></label>
+        <button type="submit">Подготовить к продаже</button>
+      </form>
+
+      <hr>
+
+      <form method="post" action="/cars/add-doc">
+        <label>Автомобиль
+          <select name="car_id" required>
+            {% for option in car_options %}
+              <option value="{{ option.id }}" {% if option.id == selected_car_id %}selected{% endif %}>{{ option.label }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label>Документация<textarea name="content" required placeholder="Описание комплектации, замечания, история"></textarea></label>
+        <button type="submit">Добавить документацию</button>
+      </form>
+    </article>
+
+    <article class="panel">
+      <h2>Бизнес-операции</h2>
+      <form method="post" action="/test-drives/schedule">
+        <div class="two-columns">
+          <label>Автомобиль
+            <select name="car_id" required>
+              {% for option in car_options %}
+                <option value="{{ option.id }}" {% if option.id == selected_car_id %}selected{% endif %}>{{ option.label }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label>Клиент
+            <select name="client_id" required>
+              {% for option in client_options %}
+                <option value="{{ option.id }}">{{ option.label }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label>Продавец
+            <select name="seller_id" required>
+              {% for option in seller_options %}
+                <option value="{{ option.id }}">{{ option.label }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label>Дата и время<input name="scheduled_at" type="datetime-local" required></label>
+        </div>
+        <label>Заметки<textarea name="notes" placeholder="Маршрут, пожелания клиента"></textarea></label>
+        <button type="submit">Назначить тест-драйв</button>
+      </form>
+
+      <hr>
+
+      <form method="post" action="/test-drives/complete">
+        <div class="two-columns">
+          <label>ID тест-драйва<input name="test_drive_id" type="number" min="1" required></label>
+          <label>Комментарий<input name="notes" placeholder="Например: клиент доволен"></label>
+        </div>
+        <button type="submit">Завершить тест-драйв</button>
+      </form>
+
+      <hr>
+
+      <form method="post" action="/sales/create">
+        <div class="two-columns">
+          <label>Автомобиль
+            <select name="car_id" required>
+              {% for option in car_options %}
+                <option value="{{ option.id }}" {% if option.id == selected_car_id %}selected{% endif %}>{{ option.label }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label>Клиент
+            <select name="client_id" required>
+              {% for option in client_options %}
+                <option value="{{ option.id }}">{{ option.label }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label>Продавец
+            <select name="seller_id" required>
+              {% for option in seller_options %}
+                <option value="{{ option.id }}">{{ option.label }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label>Цена продажи<input name="price" type="number" step="0.01" min="0.01" placeholder="Если пусто — базовая цена"></label>
+        </div>
+        <button type="submit">Оформить продажу</button>
+      </form>
+
+      <hr>
+
+      <form method="post" action="/services/open">
+        <div class="two-columns">
+          <label>Автомобиль
+            <select name="car_id" required>
+              {% for option in car_options %}
+                <option value="{{ option.id }}" {% if option.id == selected_car_id %}selected{% endif %}>{{ option.label }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label>Клиент
+            <select name="client_id">
+              <option value="">Не выбрано</option>
+              {% for option in client_options %}
+                <option value="{{ option.id }}">{{ option.label }}</option>
+              {% endfor %}
+            </select>
+          </label>
+        </div>
+        <label>Описание<textarea name="description" required placeholder="Например: замена масла, диагностика"></textarea></label>
+        <button type="submit">Открыть сервисный заказ</button>
+      </form>
+
+      <hr>
+
+      <form method="post" action="/services/close">
+        <label>ID сервисного заказа<input name="service_order_id" type="number" min="1" required></label>
+        <button type="submit">Закрыть сервисный заказ</button>
+      </form>
+    </article>
+
+    <article class="panel">
+      <h2>Информация по выбранному автомобилю</h2>
+      <p>Клик по ID автомобиля в таблице ниже откроет документацию и текущее состояние модели.</p>
+
+      {% if selected_car %}
+        <div class="selected-car">
+          <h3>Автомобиль #{{ selected_car.id }}: {{ selected_car.brand }} {{ selected_car.model }}</h3>
+          <p>
+            <strong>VIN:</strong> {{ selected_car.vin }} |
+            <strong>Год:</strong> {{ selected_car.year }} |
+            <strong>Цена:</strong> {{ format_price(selected_car.price) }} |
+            <strong>Состояние:</strong> {{ selected_car.state.value }} |
+            <strong>Место:</strong> {{ selected_car.space_id if selected_car.space_id is not none else "—" }}
+          </p>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Создано</th>
+                  <th>Содержимое</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if selected_car_docs %}
+                  {% for doc in selected_car_docs %}
+                    <tr>
+                      <td>{{ doc.id }}</td>
+                      <td>{{ format_datetime(doc.created_at) }}</td>
+                      <td>{{ doc.content }}</td>
+                    </tr>
+                  {% endfor %}
+                {% else %}
+                  <tr>
+                    <td colspan="3">Документации пока нет</td>
+                  </tr>
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      {% else %}
+        <p>Выберите автомобиль в таблице, чтобы посмотреть документацию и текущее состояние.</p>
+      {% endif %}
+    </article>
+  </section>
+
+  <section class="state-grid">
+    <article class="panel">
+      <h2>Автомобили</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>VIN</th>
+              <th>Автомобиль</th>
+              <th>Год</th>
+              <th>Цена</th>
+              <th>Состояние</th>
+              <th>Место</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if cars %}
+              {% for car in cars %}
+                <tr>
+                  <td><a href="/?car_id={{ car.id }}">#{{ car.id }}</a></td>
+                  <td>{{ car.vin }}</td>
+                  <td>{{ car.brand }} {{ car.model }}</td>
+                  <td>{{ car.year }}</td>
+                  <td>{{ format_price(car.price) }}</td>
+                  <td>{{ car.state.value }}</td>
+                  <td>{{ car.space_id if car.space_id is not none else "—" }}</td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <tr><td colspan="7">Пока нет данных</td></tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="panel">
+      <h2>Клиенты</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>ФИО</th>
+              <th>Телефон</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if clients %}
+              {% for client in clients %}
+                <tr>
+                  <td>{{ client.id }}</td>
+                  <td>{{ client.full_name }}</td>
+                  <td>{{ client.phone }}</td>
+                  <td>{{ client.email or "—" }}</td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <tr><td colspan="4">Пока нет данных</td></tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="panel">
+      <h2>Продавцы</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>ФИО</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if sellers %}
+              {% for seller in sellers %}
+                <tr>
+                  <td>{{ seller.id }}</td>
+                  <td>{{ seller.full_name }}</td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <tr><td colspan="2">Пока нет данных</td></tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="panel">
+      <h2>Выставочные места</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Название</th>
+              <th>Вместимость</th>
+              <th>Занято</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if spaces %}
+              {% for row in spaces %}
+                <tr>
+                  <td>{{ row.space.id }}</td>
+                  <td>{{ row.space.name }}</td>
+                  <td>{{ row.space.capacity }}</td>
+                  <td>{{ row.occupancy }}</td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <tr><td colspan="4">Пока нет данных</td></tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="panel">
+      <h2>Тест-драйвы</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Авто</th>
+              <th>Клиент</th>
+              <th>Продавец</th>
+              <th>Когда</th>
+              <th>Статус</th>
+              <th>Заметки</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if test_drives %}
+              {% for item in test_drives %}
+                <tr>
+                  <td>{{ item.id }}</td>
+                  <td>{{ item.car_id }}</td>
+                  <td>{{ item.client_id }}</td>
+                  <td>{{ item.seller_id }}</td>
+                  <td>{{ format_datetime(item.scheduled_at) }}</td>
+                  <td>{{ item.status }}</td>
+                  <td>{{ item.notes or "—" }}</td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <tr><td colspan="7">Пока нет данных</td></tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="panel">
+      <h2>Продажи</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Авто</th>
+              <th>Клиент</th>
+              <th>Продавец</th>
+              <th>Цена</th>
+              <th>Продано</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if sales %}
+              {% for item in sales %}
+                <tr>
+                  <td>{{ item.id }}</td>
+                  <td>{{ item.car_id }}</td>
+                  <td>{{ item.client_id }}</td>
+                  <td>{{ item.seller_id }}</td>
+                  <td>{{ format_price(item.price) }}</td>
+                  <td>{{ format_datetime(item.sold_at) }}</td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <tr><td colspan="6">Пока нет данных</td></tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="panel panel-wide">
+      <h2>Сервисные заказы</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Авто</th>
+              <th>Клиент</th>
+              <th>Описание</th>
+              <th>Статус</th>
+              <th>Открыт</th>
+              <th>Закрыт</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if service_orders %}
+              {% for item in service_orders %}
+                <tr>
+                  <td>{{ item.id }}</td>
+                  <td>{{ item.car_id }}</td>
+                  <td>{{ item.client_id if item.client_id is not none else "—" }}</td>
+                  <td>{{ item.description }}</td>
+                  <td>{{ item.status }}</td>
+                  <td>{{ format_datetime(item.opened_at) }}</td>
+                  <td>{{ format_datetime(item.closed_at) }}</td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <tr><td colspan="7">Пока нет данных</td></tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </section>
+
+  <p class="footer-note">
+    FastAPI отвечает за веб-интерфейс, а вся предметная логика по-прежнему живет
+    в сервисном слое. Это позволяет поддерживать CLI и web UI параллельно.
+  </p>
+{% endblock %}

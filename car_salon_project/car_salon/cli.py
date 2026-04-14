@@ -3,55 +3,17 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from datetime import datetime
 from pathlib import Path
 from typing import Any, Optional
 
-from .db import connect
+from .bootstrap import DEFAULT_DB_PATH, build_service, parse_datetime_input
 from .exceptions import CarSalonError, ValidationError
 from .models import CarState
-from .repositories import (
-    CarRepository,
-    ClientRepository,
-    DocumentationRepository,
-    SaleRepository,
-    SellerRepository,
-    ServiceOrderRepository,
-    ShowroomSpaceRepository,
-    TestDriveRepository,
-)
 from .services import CarSalonService
 
 
-DEFAULT_DB_PATH = Path("data") / "car_salon.db"
-
-
-def _parse_dt(value: str) -> datetime:
-    """Parse datetime in ISO format: YYYY-MM-DDTHH:MM or YYYY-MM-DD HH:MM."""
-    v = value.strip().replace(" ", "T")
-    try:
-        # allow missing seconds
-        if len(v) == 16:
-            v = v + ":00"
-        return datetime.fromisoformat(v)
-    except ValueError as exc:
-        raise ValidationError(
-            "Неверный формат даты/времени. Используйте YYYY-MM-DD HH:MM"
-        ) from exc
-
-
 def _build_service(db_path: Path) -> CarSalonService:
-    conn = connect(db_path)
-    return CarSalonService(
-        car_repo=CarRepository(conn),
-        client_repo=ClientRepository(conn),
-        seller_repo=SellerRepository(conn),
-        space_repo=ShowroomSpaceRepository(conn),
-        doc_repo=DocumentationRepository(conn),
-        testdrive_repo=TestDriveRepository(conn),
-        sale_repo=SaleRepository(conn),
-        service_repo=ServiceOrderRepository(conn),
-    )
+    return build_service(db_path)
 
 
 def _print(obj: Any) -> None:
@@ -145,7 +107,7 @@ def cmd_prepare_car(args: argparse.Namespace) -> None:
 
 def cmd_testdrive_schedule(args: argparse.Namespace) -> None:
     service = _build_service(args.db)
-    scheduled_at = _parse_dt(args.at)
+    scheduled_at = parse_datetime_input(args.at)
     td_id = service.schedule_test_drive(
         car_id=args.car_id,
         client_id=args.client_id,
@@ -323,7 +285,10 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: Optional[list[str]] = None) -> int:
     parser = build_parser()
-    args = parser.parse_args(argv)
+    normalized_argv = list(argv or [])
+    if normalized_argv and normalized_argv[0] == "cli":
+        normalized_argv = normalized_argv[1:]
+    args = parser.parse_args(normalized_argv)
 
     try:
         args.func(args)

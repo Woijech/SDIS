@@ -73,8 +73,9 @@ def resolve_player_profile(
     if not isinstance(profile_data, dict):
         raise ValueError(f"Player profile '{profile_name}' must be a JSON object")
 
-    custom_profile_selected = bool(selected_name and profile_name == selected_name and profile_name != "default")
-    merged_profile = legacy_profile | profile_data if custom_profile_selected else profile_data | legacy_profile
+    # Let explicit profile values override legacy settings while still using
+    # settings.json as a fallback for any omitted fields.
+    merged_profile = legacy_profile | profile_data
     return _normalize_player_profile(profile_name, merged_profile)
 
 

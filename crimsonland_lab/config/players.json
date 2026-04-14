@@ -2,7 +2,7 @@
   "default": {
     "speed": 260,
     "radius": 16,
-    "health": 100,
+    "health": 1000,
     "sprite": "players/player.png",
     "color": [
       126,
